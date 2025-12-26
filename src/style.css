@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+@keyframes price-pop {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15) rotate(2deg);
+    }
+}
+
+.animate-price-pop {
+    animation: price-pop 1.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+
+    75% {
+        transform: translateX(2px) rotate(1deg);
+    }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+/* 漫画式高频振动 */
+@keyframes text-vibrate {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-1px, 1px) rotate(-0.5deg);
+    }
+
+    40% {
+        transform: translate(-1px, -1px) rotate(0.5deg);
+    }
+
+    60% {
+        transform: translate(1px, 1px) rotate(-0.2deg);
+    }
+
+    80% {
+        transform: translate(1px, -1px) rotate(0.2deg);
+    }
+}
+
+.animate-text-vibrate {
+    display: inline-block;
+    animation: text-vibrate 0.3s linear infinite;
+}
+
+/* 气泡轻微漂浮 (保留类名防止报错，但行为已改) */
+@keyframes bubble-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(1deg);
+    }
+}
+
+.animate-bubble-float {
+    display: block;
+    animation: bubble-float 3s ease-in-out infinite;
+}
+
+/* 气泡“大喊”动效 - 替换原有漂浮 */
+@keyframes bubble-shout {
+
+    0%,
+    100% {
+        transform: rotate(-1deg) scale(1);
+        box-shadow: 4px 4px 0 0 #000;
+    }
+
+    50% {
+        transform: rotate(1deg) scale(1.05);
+        box-shadow: 12px 12px 0 0 #ef4444;
+    }
+}
+
+.animate-bubble-shout {
+    animation: bubble-shout 2s ease-in-out infinite;
+}
+
+/* 之前自定义的动画和工具类 */
+/* 之前的自定义样式移到这里 */
+body {
+    font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background-color: #fffbeb;
+    /* 暖奶油色底 */
+    background-image: radial-gradient(#d4d4d8 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.hero-bg-container {
+    background: radial-gradient(circle at 50% 50%, #fffbeb 0%, #fef3c7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 撕纸边缘效果 */
+.torn-edge-top {
+    clip-path: polygon(0% 15%, 5% 0%, 10% 12%, 15% 3%, 20% 15%, 25% 1%, 30% 13%, 35% 2%, 40% 15%, 45% 0%, 50% 12%, 55% 4%, 60% 15%, 65% 1%, 70% 13%, 75% 2%, 80% 15%, 85% 0%, 90% 12%, 95% 3%, 100% 15%, 100% 100%, 0% 100%);
+}
+
+.torn-edge-bottom {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 95% 100%, 90% 88%, 85% 97%, 80% 85%, 75% 100%, 70% 87%, 65% 99%, 60% 85%, 55% 96%, 50% 88%, 45% 100%, 40% 85%, 35% 98%, 30% 87%, 25% 100%, 20% 85%, 15% 97%, 10% 88%, 5% 100%, 0% 85%);
+}
+
+/* 胶带效果 (Duct Tape) */
+.tape-effect {
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tape-effect::before,
+.tape-effect::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    top: 0;
+    background-image: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.05) 50%);
+    background-size: 5px 5px;
+}
+
+.tape-effect::before {
+    left: -5px;
+}
+
+.tape-effect::after {
+    right: -5px;
+    transform: rotate(180deg);
+}
+
+/* 笔记本网格背景 */
+.notebook-grid {
+    background-color: #fff;
+    background-image:
+        linear-gradient(#e5e7eb 1px, transparent 1px),
+        linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* 警戒线/斑马纹装饰块 */
+.stripe-accent {
+    background: repeating-linear-gradient(-45deg,
+            #facc15,
+            #facc15 10px,
+            #000 10px,
+            #000 20px);
+}
+
+/* 漫画风格网点背景 (Halftone) */
+.halftone-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#000 10%, transparent 10%);
+    background-size: 15px 15px;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+
+/* 漫画标题字体 */
+.comic-font {
+    font-family: "ZCOOL KuaiLe", "Microsoft YaHei", cursive;
+}
+
+/* 手写体 */
+.handwriting {
+    font-family: 'Zhi Mang Xing', cursive;
+}
+
+/* 警戒线背景 */
+.warning-tape {
+    background: repeating-linear-gradient(45deg,
+            #fcd34d,
+            #fcd34d 10px,
+            #000 10px,
+            #000 20px);
+}
+
+/* 硬阴影风格 (Neo-Brutalism) */
+.hard-shadow {
+    box-shadow: 6px 6px 0px 0px #000;
+    transition: all 0.2s;
+}
+
+.hard-shadow:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000;
+}
+
+/* 漫画气泡 */
+.speech-bubble {
+    position: relative;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 20px;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #000 transparent;
+    display: block;
+    width: 0;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 23px;
+    border-width: 12px 12px 0;
+    border-style: solid;
+    border-color: #fff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+/* 强调高亮笔触 */
+.highlight-marker {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.highlight-marker::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -2px;
+    width: 104%;
+    height: 40%;
+    background-color: #fde047;
+    /* bg-yellow-300 */
+    z-index: -1;
+    transform: rotate(-1deg);
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* 呼吸/跳动动画 */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-float {
+    animation: float 2s ease-in-out infinite;
+}
+
+/* 滚动进入动画基础 */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 霓虹流光边框动画 */
+@keyframes rotate-gradient {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.neon-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 4px;
+    z-index: 1;
+}
+
+.neon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg,
+            transparent 0%,
+            #facc15 15%,
+            #ef4444 30%,
+            #3b82f6 45%,
+            #10b981 60%,
+            transparent 100%);
+    animation: rotate-gradient 3s linear infinite;
+    z-index: -1;
+}
+
+.neon-content {
+    background: white;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 二维码心跳缩放 */
+@keyframes qr-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.animate-qr-pulse {
+    animation: qr-pulse 2s ease-in-out infinite;
+}
+
+/* 增强扫描线 */
+.scan-line-fancy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #ef4444, transparent);
+    box-shadow: 0 0 15px #ef4444, 0 0 5px #fff;
+    z-index: 10;
+    animation: scan-fancy 2.5s ease-in-out infinite;
+}
+
+@keyframes scan-fancy {
+
+    0%,
+    100% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    5%,
+    95% {
+        opacity: 1;
+    }
+
+    10% {
+        top: 0%;
+    }
+
+    90% {
+        top: 100%;
+    }
+}
+
+/* 漂浮贴纸动画 */
+@keyframes sticker-float {
+
+    0%,
+    100% {
+        transform: rotate(-3deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(2deg) translateY(-10px);
+    }
+}
+
+.animate-sticker {
+    animation: sticker-float 4s ease-in-out infinite;
+}
